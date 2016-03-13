@@ -1,0 +1,21 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 0px;
+  padding-bottom: 20px;
+}
+
+.download {
+	cursor: pointer;
+}
+
+.photo-box {
+	text-align: center;
+	margin: 10px;
+}
+.photo-box img {
+	margin: 10px;
+}
+.photo-label {
+	background: #f0f0f0;
+	height: 20px;
+}
