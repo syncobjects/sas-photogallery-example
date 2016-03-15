@@ -29,7 +29,7 @@ function redirect(url) {
 		
 		<p>You can see my photos here! You can also post your photos!</p>
 		
-		<form action="/photo/post" method="post" enctype="multipart/form-data">
+		<form action="/photoupload" method="post" enctype="multipart/form-data">
 			<fieldset class="form-group">
 			
 			<div class="row">

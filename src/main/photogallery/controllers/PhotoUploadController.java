@@ -2,6 +2,7 @@ package photogallery.controllers;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,8 +17,8 @@ import com.syncobjects.as.api.Parameter;
 import com.syncobjects.as.api.Result;
 import com.syncobjects.as.api.ResultFactory;
 
-@Controller(url="/photo/*")
-public class PhotoController {
+@Controller(url="/photoupload")
+public class PhotoUploadController {
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	private ApplicationContext application;
 	private ErrorContext errors;
@@ -29,7 +30,7 @@ public class PhotoController {
 	private String label;
 
 	@Action
-	public Result post() {
+	public Result photoupload() {
 		Date d = new Date();
 		if(date != null) {
 			try { d = sdf.parse(date); }
@@ -68,10 +69,18 @@ public class PhotoController {
 			datedir.mkdirs();
 
 		//
-		// count number of files existing to this directory
+		// count number of image files existing to this directory.
 		// create the index for the next file using the #files + 1
+		// remember that since we have the .txt files to hold the metadata... only the images
+		// is what we shall consider for this count.
 		//
-		int index = datedir.list().length + 1;
+		int index = datedir.list(new FilenameFilter() {
+			public boolean accept(File dir, String name) {
+				if(name.endsWith(".jpg") || name.endsWith(".png"))
+					return true;
+				return false;
+			}
+		}).length + 1;
 
 		String fileExtension = photo.getType().equals("image/jpeg") ? ".jpg": ".png";
 		
