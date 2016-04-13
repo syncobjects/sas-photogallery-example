@@ -8,14 +8,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.syncobjects.as.api.Action;
-import com.syncobjects.as.api.ApplicationContext;
-import com.syncobjects.as.api.Controller;
-import com.syncobjects.as.api.ErrorContext;
-import com.syncobjects.as.api.FileUpload;
-import com.syncobjects.as.api.Parameter;
-import com.syncobjects.as.api.Result;
-import com.syncobjects.as.api.ResultFactory;
+import io.syncframework.api.Action;
+import io.syncframework.api.ApplicationContext;
+import io.syncframework.api.Controller;
+import io.syncframework.api.ErrorContext;
+import io.syncframework.api.FileUpload;
+import io.syncframework.api.Parameter;
+import io.syncframework.api.Result;
+import io.syncframework.api.ResultFactory;
 
 @Controller(url="/photoupload")
 public class PhotoUploadController {

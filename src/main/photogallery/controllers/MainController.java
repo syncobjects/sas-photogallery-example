@@ -11,12 +11,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import com.syncobjects.as.api.Action;
-import com.syncobjects.as.api.ApplicationContext;
-import com.syncobjects.as.api.Controller;
-import com.syncobjects.as.api.Parameter;
-import com.syncobjects.as.api.Result;
-import com.syncobjects.as.api.ResultFactory;
+import io.syncframework.api.Action;
+import io.syncframework.api.ApplicationContext;
+import io.syncframework.api.Controller;
+import io.syncframework.api.Parameter;
+import io.syncframework.api.Result;
+import io.syncframework.api.ResultFactory;
 
 import photogallery.Photo;
 
