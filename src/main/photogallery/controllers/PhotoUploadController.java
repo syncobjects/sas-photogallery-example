@@ -22,15 +22,29 @@ public class PhotoUploadController {
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	private ApplicationContext application;
 	private ErrorContext errors;
+	/**
+	 * date from the form
+	 */
 	@Parameter
 	private String date;
+	/**
+	 * receive the photo uploaded by the user
+	 */
 	@Parameter
 	private FileUpload photo;
+	/**
+	 * label from the form
+	 */
 	@Parameter
 	private String label;
 
+	/**
+	 * This is our @Action to handle the photoupload.
+	 * @return redirect to /main
+	 */
 	@Action
 	public Result photoupload() {
+		// validates the form
 		Date d = new Date();
 		if(date != null) {
 			try { d = sdf.parse(date); }
@@ -58,12 +72,16 @@ public class PhotoUploadController {
 		if(errors.size() > 0)
 			return ResultFactory.render("/error.ftl");
 
+		// retrieves the public folder
 		String publicFolder = (String)application.get(ApplicationContext.PUBLIC_FOLDER);
 		
+		// creates the public/photos folder if does not exist
 		File photosFolder = new File(publicFolder, "photos");
 		if(!photosFolder.exists())
 			photosFolder.mkdirs();
 		
+		// creates the public/photos/<date> folder if does not exist. Note that the from treats the date
+		// as dd/MM/yyy, so we replace it to dd-MM-yyyy.
 		File datedir = new File(photosFolder, sdf.format(d).replaceAll("/", "-"));
 		if(!datedir.exists())
 			datedir.mkdirs();
